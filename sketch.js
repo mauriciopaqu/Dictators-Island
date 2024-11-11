@@ -5,6 +5,7 @@ let doors = [];
 let lastClickTime = 0;
 let doorsOpened = new Set();
 let allDoorsOpened = false;
+let musicbSound;
 
 function preload() {
   doorOpenSound = loadSound("dooropen.mp3");
@@ -36,8 +37,9 @@ function preload() {
 function setup() {
   createCanvas(1024, 768);
   textSize(18);
-  musicbSound.setVolume(0.2);
-  musicbSound.loop();
+  musicbSound.setVolume(0.2);  // Adjust the volume as needed
+  musicbSound.loop();          // Loop the music
+  musicbSound.play();      
 
   doors = [
     { x: 505, y: 499, w: 80, h: 110 },
@@ -55,6 +57,7 @@ function draw() {
  if (gameState === "intro0") {
     image(img21, 0, 0, width, height);
     drawButton("Start", width / 2 - 50, height - 300, 100, 40, () => gameState = "intro1");
+   
 
   } else if (gameState === "intro1") {
     image(img12, 0, 0, width, height);
